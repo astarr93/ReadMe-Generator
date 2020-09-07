@@ -51,48 +51,48 @@ let questions = [
         ],
         when: (answers) => answers.haveProjectLicense === true
     },
-    {
-        type: "confirm",
-        name: "haveProjectCredits",
-        message: "Do you have any project contributors to credit?: ",
-        default: false
-    },
-    {
-        type: "input",
-        name: "projectCredits",
-        message: "Please provide any GitHub usernames that contributed to the project: ",
-        when: (answers) => answers.haveProjectCredits === true
-    },
-    {
-        type: "confirm",
-        name: "haveProjectTest",
-        message: "Do you have any testing instructions to prvoide about your project?: ",
-        default: false
-    },
-    {
-        type: "input",
-        name: "projectTest",
-        message: "Please describe any relevant testing instructions for your Project: ",
-        when: (answers) => answers.haveProjectTest === true
-    },
     // {
     //     type: "confirm",
-    //     name: "haveProjectTestMedia",
-    //     message: "Do you have any supporting testing media (GIFs, JPGs, etc.) of your project to add?: ",
-    //     default: false,
-    //     when: (answers) => answers.haveProjectTest === true
+    //     name: "haveProjectCredits",
+    //     message: "Do you have any project contributors to credit?: ",
+    //     default: false
     // },
     // {
     //     type: "input",
-    //     name: "projectTestMedia",
-    //     message: "Please select the folder that contains your project media: ",
-    //     when: (answers) => answers.haveProjectTestMedia === true
+    //     name: "projectCredits",
+    //     message: "Please provide any GitHub usernames that contributed to the project: ",
+    //     when: (answers) => answers.haveProjectCredits === true
     // },
-    {
-        type: "input",
-        name: "support",
-        message: "Please provide the GitHub username(s) responsible for answering any additional questions about your project: ",
-    }
+    // {
+    //     type: "confirm",
+    //     name: "haveProjectTest",
+    //     message: "Do you have any testing instructions to prvoide about your project?: ",
+    //     default: false
+    // },
+    // {
+    //     type: "input",
+    //     name: "projectTest",
+    //     message: "Please describe any relevant testing instructions for your Project: ",
+    //     when: (answers) => answers.haveProjectTest === true
+    // },
+    // // {
+    // //     type: "confirm",
+    // //     name: "haveProjectTestMedia",
+    // //     message: "Do you have any supporting testing media (GIFs, JPGs, etc.) of your project to add?: ",
+    // //     default: false,
+    // //     when: (answers) => answers.haveProjectTest === true
+    // // },
+    // // {
+    // //     type: "input",
+    // //     name: "projectTestMedia",
+    // //     message: "Please select the folder that contains your project media: ",
+    // //     when: (answers) => answers.haveProjectTestMedia === true
+    // // },
+    //     {
+    //         type: "input",
+    //         name: "support",
+    //         message: "Please provide the GitHub username(s) responsible for answering any additional questions about your project: ",
+    //     }
 ];
 
 module.exports = questions;
