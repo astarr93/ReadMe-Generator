@@ -46,6 +46,7 @@ let questions = [
         choices: [
             "Apache License 2.0",
             "GNU GPLv3",
+            "ISC",
             "MIT",
         ],
         when: (answers) => answers.haveProjectLicense === true
@@ -58,7 +59,7 @@ let questions = [
     },
     {
         type: "input",
-        name: "haveProjectTest",
+        name: "projectTest",
         message: "Please provide any testing instructions about your project?: ",
     },
     // {
