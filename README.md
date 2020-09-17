@@ -28,6 +28,8 @@ Once the repository has been cloned, open a Git Bash terminal and navigate to th
 
 to start the application. When finished, the application will create your README file in your downloads folder.
 
+https://drive.google.com/file/d/14BE6pN1MxI0Uxy3UGE1sm53rSA6ZW-mV/view
+
 # Testing
 
 I've added the fuzzypath module to experiment with selecting folder directories and ingesting media like screenshots, gifs, etc.
