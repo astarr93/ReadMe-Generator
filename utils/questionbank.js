@@ -53,8 +53,8 @@ let questions = [
     },
     {
         type: "confirm",
-        name: "haveContributers",
-        message: "Is your project accepting contributers?: ",
+        name: "haveContributors",
+        message: "Is your project accepting contributors?: ",
         default: false
     },
     {

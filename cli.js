@@ -21,6 +21,6 @@ figlet('ReadMe Generator', function (err, data) {
     // Inquirer on data for the ReadMe file from the user using questions from questionbank.js
     inquirer.prompt(questions).then(answers => {
         const filePath = path.normalize(`${os.homedir}\\downloads\\README-${answers.projectTitle}.md`);
-        fs.writeFileSync(filePath, generateReadMe({...answers}), () => console.log("The file was created successfully"));
+        fs.writeFileSync(filePath, generateReadMe({ ...answers }));
     });
 });

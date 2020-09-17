@@ -1,12 +1,16 @@
-const apache = { text: "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).", badge: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)' };
-const gnu = { text: "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).", badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)' };
-const isc = { text: "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).", badge: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)' };
-const mit = { text: "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).", badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)' };
+const apache = { text: "Licensed under the [Apache license](https://spdx.org/licenses/Apache-2.0.html).", badge: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)' };
+const gnu = { text: "Licensed under the [GNU GPLv3 license](https://spdx.org/licenses/GPL-3.0-or-later.html).", badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)' };
+const isc = { text: "Licensed under the [ISC license](https://spdx.org/licenses/ISC.html).", badge: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)' };
+const mit = { text: "Licensed under the [MIT license](https://spdx.org/licenses/MIT.html).", badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)' };
+const contributorCovenant = { text: `This project has adopted the [Contributor Covenant](https://www.contributor-covenant.org/). Please visit their [FAQs Page](https://www.contributor-covenant.org/faq/) for more information.`, badge: `[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)` };
+let badges = [];
 
 function generateMarkdown(answers) {
+  let license = checkLicense(answers);
+  let conductCode = checkContributors(answers);
 
   return `# ${answers.projectTitle}  
-
+  ${badges}
 
 ## Table of Contents
 
@@ -18,73 +22,83 @@ function generateMarkdown(answers) {
   6. [Contributions](#contributions)    
   7. [Support](#support)    
 
-***
   
-# 1. Description
+# Description
+
 
 ${answers.projectAbout}  
 
-***
 
-# 2. Installation  
+# Installation  
+
 
 ${answers.projectInstall}  
 
-***
 
-# 3. Usage  
+# Usage  
+
 
 ${answers.projectUsage}  
 
-***
 
-# 4. Testing  
+# Testing  
+
 
 ${answers.projectTest}  
 
-***
 
-# 5. License  
+# License  
 
-${checkLicense(answers)}
 
-***
+${license}
 
-# 6. Contributions  
 
-${checkContributers(answers)}  
+# Contributions  
 
-***
 
-# 7. Support  
+${conductCode}  
 
-${answers.support}  
 
-***
+# Support  
+
+
+Don't hestiate to reach out to https://www.github.com/${answers.support} for any questions or concerns regarding the project.
+
 `;
 }
 
+
 function checkLicense(answers) {
-  if (answers.haveProjectLicense === false) {
-    let license = "This project is not licensed.";
-    return license;
-  } else if (answers.projectLicense === "Apache License 2.0") {
-    let license = apache
-    return `${license.text} ${license.badge}`;
-  } else if (answers.projectLicense === "GNU GPLv3") {
-    let license = gnu;
-    return `${license.text} ${license.badge}`;
-  } else if (answers.projectLicense === "ISC") {
-    let license = isc;
-    return `${license.text} ${license.badge}`;
-  } else if (answers.projectLicense === "MIT") {
-    let license = mit;
-    return `${license.text} ${license.badge}`;
-  }
+  switch (answers.projectLicense) {
+    case "Apache License 2.0":
+      badges.push(apache.badge);
+      return apache.text;
+      break
+    case "GNU GPLv3":
+      badges.push(gnu.badge);
+      return gnu.text;
+      break;
+    case "ISC":
+      badges.push(isc.badge);
+      return isc.text;
+      break;
+    case "MIT":
+      badges.push(mit.badge);
+      return mit.text;
+      break;
+    default:
+      return "This project is currently unlicensed.";
+      break;
+  };
 };
 
-function checkContributers(answers) {
-  return answers.haveContributers ? `We're accepting contributions from developers following the [Contributor Covenant](https://www.contributor-covenant.org/).` : "We're not accepting contributions at this time."
+function checkContributors(answers) {
+  return answers.haveContributors ? addContributorCovenant(answers) : "We're not accepting contributions at this time."
+
+  function addContributorCovenant(answers) {
+    badges.push(contributorCovenant.badge);
+    return contributorCovenant.text;
+  }
 }
 
 module.exports = generateMarkdown;
