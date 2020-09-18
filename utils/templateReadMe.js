@@ -10,7 +10,7 @@ function generateMarkdown(answers) {
   let conductCode = checkContributors(answers);
 
   return `# ${answers.projectTitle}  
-  ${badges}
+  ${badges.join(" ")}
 
 ## Table of Contents
 
@@ -93,13 +93,13 @@ function checkLicense(answers) {
 };
 
 function checkContributors(answers) {
-  return answers.haveContributors ? addContributorCovenant(answers) : "We're not accepting contributions at this time."
-
-  function addContributorCovenant(answers) {
+  if (!answers.haveContributors) {
+    return "We're not accepting contributions at this time."
+  }
+  else {
     badges.push(contributorCovenant.badge);
     return contributorCovenant.text;
   }
 }
 
 module.exports = generateMarkdown;
-
