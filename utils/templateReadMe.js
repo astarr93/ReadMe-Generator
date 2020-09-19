@@ -73,22 +73,17 @@ function checkLicense(answers) {
     case "Apache License 2.0":
       badges.push(apache.badge);
       return apache.text;
-      break
     case "GNU GPLv3":
       badges.push(gnu.badge);
-      return gnu.text;
-      break;
+      return gnu.text;;
     case "ISC":
       badges.push(isc.badge);
-      return isc.text;
-      break;
+      return isc.text;;
     case "MIT":
       badges.push(mit.badge);
-      return mit.text;
-      break;
+      return mit.text;;
     default:
       return "This project is currently unlicensed.";
-      break;
   };
 };
 
