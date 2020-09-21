@@ -1,4 +1,4 @@
-let questions = [
+const questions = [
     {
         type: "input",
         name: "projectTitle",
